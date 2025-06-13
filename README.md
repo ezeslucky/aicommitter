@@ -4,7 +4,7 @@
     <h1 align="center">AI Committer</h1>
   </div>
 	<p>A CLI that writes your git commit messages for you with AI. Never write a commit message again.</p>
-	<a href="https://www.npmjs.com/package/aicommitter"><img src="https://img.shields.io/npm/v/aicommitter" alt="Current version"></a>
+	<a href="https://www.npmjs.com/package/@ezeslucky/aicommitter"><img src="https://img.shields.io/npm/v/@ezeslucky/aicommitter" alt="1.0.2"></a>
 </div>
 
 ---

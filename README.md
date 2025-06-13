@@ -1,10 +1,10 @@
 <div align="center">
   <div>
-    <img src=".github/screenshot.png" alt="AI Committer"/>
-    <h1 align="center">AI Committer</h1>
+    <img src=".github/screenshot.png" alt="AI Commits"/>
+    <h1 align="center">AI Commits</h1>
   </div>
 	<p>A CLI that writes your git commit messages for you with AI. Never write a commit message again.</p>
-	
+	<a href="https://www.npmjs.com/package/aicommits"><img src="https://img.shields.io/npm/v/aicommits" alt="Current version"></a>
 </div>
 
 ---
@@ -13,89 +13,89 @@
 
 > The minimum supported version of Node.js is the latest v14. Check your Node.js version with `node --version`.
 
-1. Install _aicommitter_:
+1. Install _aicommits_:
 
    ```sh
-   npm install -g aicommitter
+   npm install -g aicommits
    ```
 
 2. Retrieve your API key from [OpenAI](https://platform.openai.com/account/api-keys)
 
    > Note: If you haven't already, you'll have to create an account and set up billing.
 
-3. Set the key so aicommitter can use it:
+3. Set the key so aicommits can use it:
 
    ```sh
-   aicommitter config set OPENAI_KEY=<your token>
+   aicommits config set OPENAI_KEY=<your token>
    ```
 
-   This will create a `.aicommitter` file in your home directory.
+   This will create a `.aicommits` file in your home directory.
 
 ### Upgrading
 
 Check the installed version with:
 
 ```
-aicommitter --version
+aicommits --version
 ```
 
-If it's not the [latest version](https://github.com/ezeslucky/aicommitter.git/releases/latest), run:
+If it's not the [latest version](https://github.com/Nutlope/aicommits/releases/latest), run:
 
 ```sh
-npm update -g aicommitter
+npm update -g aicommits
 ```
 
 ## Usage
 
 ### CLI mode
 
-You can call `aicommitter` directly to generate a commit message for your staged changes:
+You can call `aicommits` directly to generate a commit message for your staged changes:
 
 ```sh
 git add <files...>
-aicommitter
+aicommits
 ```
 
-`aicommitter` passes down unknown flags to `git commit`, so you can pass in [`commit` flags](https://git-scm.com/docs/git-commit).
+`aicommits` passes down unknown flags to `git commit`, so you can pass in [`commit` flags](https://git-scm.com/docs/git-commit).
 
 For example, you can stage all changes in tracked files with as you commit:
 
 ```sh
-aicommitter --all # or -a
+aicommits --all # or -a
 ```
 
-> 👉 **Tip:** Use the `aic` alias if `aicommitter` is too long for you.
+> 👉 **Tip:** Use the `aic` alias if `aicommits` is too long for you.
 
 #### Generate multiple recommendations
 
 Sometimes the recommended commit message isn't the best so you want it to generate a few to pick from. You can generate multiple commit messages at once by passing in the `--generate <i>` flag, where 'i' is the number of generated messages:
 
 ```sh
-aicommitter --generate <i> # or -g <i>
+aicommits --generate <i> # or -g <i>
 ```
 
 > Warning: this uses more tokens, meaning it costs more.
 
 #### Generating Conventional Commits
 
-If you'd like to generate [Conventional Commits](https://conventionalcommits.org/), you can use the `--type` flag followed by `conventional`. This will prompt `aicommitter` to format the commit message according to the Conventional Commits specification:
+If you'd like to generate [Conventional Commits](https://conventionalcommits.org/), you can use the `--type` flag followed by `conventional`. This will prompt `aicommits` to format the commit message according to the Conventional Commits specification:
 
 ```sh
-aicommitter --type conventional # or -t conventional
+aicommits --type conventional # or -t conventional
 ```
 
 This feature can be useful if your project follows the Conventional Commits standard or if you're using tools that rely on this commit format.
 
 ### Git hook
 
-You can also integrate _aicommitter_ with Git via the [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. This lets you use Git like you normally would, and edit the commit message before committing.
+You can also integrate _aicommits_ with Git via the [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. This lets you use Git like you normally would, and edit the commit message before committing.
 
 #### Install
 
 In the Git repository you want to install the hook in:
 
 ```sh
-aicommitter hook install
+aicommits hook install
 ```
 
 #### Uninstall
@@ -103,7 +103,7 @@ aicommitter hook install
 In the Git repository you want to uninstall the hook from:
 
 ```sh
-aicommitter hook uninstall
+aicommits hook uninstall
 ```
 
 #### Usage
@@ -117,7 +117,7 @@ aicommitter hook uninstall
 
    > If you ever want to write your own message instead of generating one, you can simply pass one in: `git commit -m "My message"`
 
-2. aicommitter will generate the commit message for you and pass it back to Git. Git will open it with the [configured editor](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git) for you to review/edit it.
+2. Aicommits will generate the commit message for you and pass it back to Git. Git will open it with the [configured editor](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git) for you to review/edit it.
 
 3. Save and close the editor to commit!
 
@@ -128,19 +128,19 @@ aicommitter hook uninstall
 To retrieve a configuration option, use the command:
 
 ```sh
-aicommitter config get <key>
+aicommits config get <key>
 ```
 
 For example, to retrieve the API key, you can use:
 
 ```sh
-aicommitter config get OPENAI_KEY
+aicommits config get OPENAI_KEY
 ```
 
 You can also retrieve multiple configuration options at once by separating them with spaces:
 
 ```sh
-aicommitter config get OPENAI_KEY generate
+aicommits config get OPENAI_KEY generate
 ```
 
 ### Setting a configuration value
@@ -148,19 +148,19 @@ aicommitter config get OPENAI_KEY generate
 To set a configuration option, use the command:
 
 ```sh
-aicommitter config set <key>=<value>
+aicommits config set <key>=<value>
 ```
 
 For example, to set the API key, you can use:
 
 ```sh
-aicommitter config set OPENAI_KEY=<your-api-key>
+aicommits config set OPENAI_KEY=<your-api-key>
 ```
 
 You can also set multiple configuration options at once by separating them with spaces, like
 
 ```sh
-aicommitter config set OPENAI_KEY=<your-api-key> generate=3 locale=en
+aicommits config set OPENAI_KEY=<your-api-key> generate=3 locale=en
 ```
 
 ### Options
@@ -192,7 +192,7 @@ Set a HTTP/HTTPS proxy to use for requests.
 To clear the proxy option, you can use the command (note the empty value after the equals sign):
 
 ```sh
-aicommitter config set proxy=
+aicommits config set proxy=
 ```
 
 #### model
@@ -210,7 +210,7 @@ The timeout for network requests to the OpenAI API in milliseconds.
 Default: `10000` (10 seconds)
 
 ```sh
-aicommitter config set timeout=20000 # 20s
+aicommits config set timeout=20000 # 20s
 ```
 
 #### max-length
@@ -220,7 +220,7 @@ The maximum character length of the generated commit message.
 Default: `50`
 
 ```sh
-aicommitter config set max-length=100
+aicommits config set max-length=100
 ```
 
 #### type
@@ -230,13 +230,13 @@ Default: `""` (Empty string)
 The type of commit message to generate. Set this to "conventional" to generate commit messages that follow the Conventional Commits specification:
 
 ```sh
-aicommitter config set type=conventional
+aicommits config set type=conventional
 ```
 
 You can clear this option by setting it to an empty string:
 
 ```sh
-aicommitter config set type=
+aicommits config set type=
 ```
 
 ## How it works
@@ -247,10 +247,10 @@ Video coming soon where I rebuild it from scratch to show you how to easily buil
 
 ## Maintainers
 
-- **Aurobindo Patra**: [@ezeslucky](https://github.com/ezeslucky) [<img src="https://img.shields.io/twitter/follow/ezeslucky?style=flat&label=ezeslucky&logo=twitter&color=0bf&logoColor=fff" align="center">](https://twitter.com/ezeslucky)
+- **Hassan El Mghari**: [@Nutlope](https://github.com/Nutlope) [<img src="https://img.shields.io/twitter/follow/nutlope?style=flat&label=nutlope&logo=twitter&color=0bf&logoColor=fff" align="center">](https://twitter.com/nutlope)
 
-
+- **Hiroki Osame**: [@privatenumber](https://github.com/privatenumber) [<img src="https://img.shields.io/twitter/follow/privatenumbr?style=flat&label=privatenumbr&logo=twitter&color=0bf&logoColor=fff" align="center">](https://twitter.com/privatenumbr)
 
 ## Contributing
 
-If you want to help fix a bug or implement a feature in [Issues](https://github.com/ezeslucky/aicommitter.git/issues), checkout the [Contribution Guide](CONTRIBUTING.md) to learn how to setup and test the project
+If you want to help fix a bug or implement a feature in [Issues](https://github.com/Nutlope/aicommits/issues), checkout the [Contribution Guide](CONTRIBUTING.md) to learn how to setup and test the project

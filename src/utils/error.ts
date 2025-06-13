@@ -15,7 +15,7 @@ export const handleCliError = (error: any) => {
 			`\n${indent}Please open a Bug report with the information above:`
 		);
 		console.error(
-			`${indent}https://github.com/ezeslucky/aicommitter.git/issues/new/choose`
+			`${indent}https://github.com/ezeslucky/aicommitter/issues/new/choose`
 		);
 	}
 };

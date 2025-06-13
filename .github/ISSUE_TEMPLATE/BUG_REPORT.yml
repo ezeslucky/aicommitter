@@ -18,11 +18,11 @@ body:
       required: true
   - type: input
     attributes:
-      label: aicommits version
+      label: aicommitter version
       description: |
         Run and paste the output of:
         ```sh
-        aicommits --version
+        aicommitter --version
         ```
       placeholder: v0.0.0
     validations:

@@ -25,7 +25,7 @@ export default async (
 	rawArgv: string[]
 ) =>
 	(async () => {
-		intro(bgCyan(black(' aicommits ')));
+		intro(bgCyan(black(' aicommitter ')));
 		await assertGitRepo();
 
 		const detectingFiles = spinner();

@@ -7,16 +7,16 @@ import {
 	type FsFixture,
 } from 'fs-fixture';
 
-const aicommitsPath = path.resolve('./dist/cli.mjs');
+const aicommitterPath = path.resolve('./dist/cli.mjs');
 
-const createAicommits = (fixture: FsFixture) => {
+const createaicommitter = (fixture: FsFixture) => {
 	const homeEnv = {
 		HOME: fixture.path, // Linux
 		USERPROFILE: fixture.path, // Windows
 	};
 
 	return (args?: string[], options?: Options) =>
-		execaNode(aicommitsPath, args, {
+		execaNode(aicommitterPath, args, {
 			cwd: fixture.path,
 			...options,
 			extendEnv: false,
@@ -50,16 +50,16 @@ export const createGit = async (cwd: string) => {
 
 export const createFixture = async (source?: string | FileTree) => {
 	const fixture = await createFixtureBase(source);
-	const aicommits = createAicommits(fixture);
+	const aicommitter = createaicommitter(fixture);
 
 	return {
 		fixture,
-		aicommits,
+		aicommitter,
 	};
 };
 
 export const files = Object.freeze({
-	'.aicommits': `OPENAI_KEY=${process.env.OPENAI_KEY}`,
+	'.aicommitter': `OPENAI_KEY=${process.env.OPENAI_KEY}`,
 	'data.json': Array.from(
 		{ length: 10 },
 		(_, i) => `${i}. Lorem ipsum dolor sit amet`

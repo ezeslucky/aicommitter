@@ -18,7 +18,6 @@ Run the `build` script:
 pnpm build
 ```
 
-The package is bundled using [pkgroll](https://github.com/privatenumber/pkgroll) (Rollup). It infers the entry-points from `package.json` so there are no build configurations.
 
 
 ### Development (watch) mode
@@ -55,9 +54,7 @@ pnpm test
 ```
 
 
-## Using & testing your changes
 
-Let's say you made some changes in a fork/branch and you want to test it in a project. You can publish the package to a GitHub branch using [`git-publish`](https://github.com/privatenumber/git-publish):
 
 Publish your current branch to a `npm/*` branch on your GitHub repository:
 ```sh
